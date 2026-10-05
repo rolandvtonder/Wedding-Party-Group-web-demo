@@ -2,6 +2,7 @@ import {StrictMode} from 'react';
 import {renderToString} from 'react-dom/server';
 import App from './App';
 import {brand, contact, routes, routeMeta} from './content';
+import {withBase} from './lib/base';
 import {setServerPath} from './lib/router';
 
 /**
@@ -31,8 +32,8 @@ export function render(path: string) {
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
-    path === '/' ? `<link rel="preload" as="image" href="/media/brand/crest.webp" fetchpriority="high" />` : '',
-    path === '/' ? `<link rel="preload" as="image" href="/media/photos/hero-lakeside-table.webp" fetchpriority="high" />` : '',
+    path === '/' ? `<link rel="preload" as="image" href="${withBase('/media/brand/crest.webp')}" fetchpriority="high" />` : '',
+    path === '/' ? `<link rel="preload" as="image" href="${withBase('/media/photos/hero-lakeside-table.webp')}" fetchpriority="high" />` : '',
     path === '/' ? `<script type="application/ld+json">${JSON.stringify(localBusiness).replace(/</g, '\\u003c')}</script>` : '',
   ]
     .filter(Boolean)

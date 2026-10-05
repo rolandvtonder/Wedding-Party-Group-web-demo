@@ -5,7 +5,9 @@
  * the business hasn't published itself.
  */
 
-const photo = (name: string) => `/media/photos/${name}.webp`;
+import {withBase} from './lib/base';
+
+const photo = (name: string) => withBase(`/media/photos/${name}.webp`);
 
 export const brand = {
   name: 'The Wedding Party Group',

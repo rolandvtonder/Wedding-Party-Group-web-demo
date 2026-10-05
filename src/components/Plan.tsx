@@ -2,6 +2,7 @@ import {useEffect, useRef, useState, type FormEvent, type ReactNode} from 'react
 import {contact, plan, waLink} from '../content';
 import {rentals} from '../data/rentals';
 import {useReveals} from '../hooks/useReveals';
+import {withBase} from '../lib/base';
 import {clearItems, removeItem, useEnquiry} from '../lib/enquiry';
 import {A, Eyebrow, Icon, btn} from './ui';
 
@@ -233,7 +234,7 @@ export function Plan({standalone = false}: {standalone?: boolean}) {
                 <ul className="flex flex-wrap gap-2">
                   {items.map((r) => (
                     <li key={r.sku} className="flex items-center gap-2 rounded-full bg-ivory/[0.06] py-1 pr-1 pl-1 text-[0.875rem] text-linen">
-                      <img src={r.img} alt="" className="size-8 rounded-full object-cover" />
+                      <img src={withBase(r.img)} alt="" className="size-8 rounded-full object-cover" />
                       {r.name}
                       <button type="button" onClick={() => removeItem(r.sku)} aria-label={`Remove ${r.name}`} className="flex size-8 items-center justify-center rounded-full text-stone hover:bg-ivory/10 hover:text-ivory">
                         <Icon.Close className="size-3.5" />

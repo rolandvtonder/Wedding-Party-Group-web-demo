@@ -19,6 +19,11 @@ unknown addresses. `sitemap.xml` and `robots.txt` are generated for
 `https://weddingparty.co.za`; change `SITE` in `scripts/prerender.mjs` and
 `brand.url` in `src/content.ts` if the domain differs.
 
+**GitHub Pages demo.** `.github/workflows/deploy.yml` builds and publishes on
+every push to `main`, with `BASE_PATH=/<repo>/` so links and images work under
+`https://<user>.github.io/<repo>/`. In the repo's *Settings → Pages*, set
+*Source* to **GitHub Actions**. On a real domain, build without `BASE_PATH`.
+
 ## Where things live
 
 | What | File |

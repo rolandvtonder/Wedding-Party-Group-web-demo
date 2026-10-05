@@ -1,4 +1,5 @@
 import {useSyncExternalStore, type MouseEvent} from 'react';
+import {stripBase} from './base';
 import {scrollToHash, scrollToY} from './scroll';
 
 /**
@@ -29,7 +30,7 @@ function subscribe(fn: () => void) {
   };
 }
 
-const currentPath = () => normalise(window.location.pathname);
+const currentPath = () => normalise(stripBase(window.location.pathname));
 
 export function usePath() {
   return useSyncExternalStore(

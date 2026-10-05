@@ -2,6 +2,7 @@ import {useMemo, useState} from 'react';
 import {planPath, rentalRules} from '../content';
 import {rentals} from '../data/rentals';
 import {useReveals} from '../hooks/useReveals';
+import {withBase} from '../lib/base';
 import {toggleItem, useEnquiry} from '../lib/enquiry';
 import {A, Icon, btn} from './ui';
 
@@ -89,7 +90,7 @@ export function Catalogue() {
             return (
               <li key={r.sku} className="flex flex-col">
                 <div className="relative aspect-square overflow-hidden rounded-[2px] bg-ivory">
-                  <img src={r.img} alt={r.name} loading="lazy" decoding="async" width={480} height={480} className="size-full object-cover" />
+                  <img src={withBase(r.img)} alt={r.name} loading="lazy" decoding="async" width={480} height={480} className="size-full object-cover" />
                   {on && (
                     <span className="absolute top-2 right-2 flex size-7 items-center justify-center rounded-full bg-gold text-ink" aria-hidden="true">
                       <Icon.Check className="size-4" />

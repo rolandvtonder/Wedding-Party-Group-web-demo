@@ -1,4 +1,5 @@
 import type {AnchorHTMLAttributes, ReactNode, SVGProps} from 'react';
+import {withBase} from '../lib/base';
 import {linkClick} from '../lib/router';
 
 /* ------------------------------------------------------------------ */
@@ -113,10 +114,11 @@ export function Rings({className = ''}: {className?: string}) {
 type AProps = AnchorHTMLAttributes<HTMLAnchorElement> & {href: string; onNavigate?: () => void};
 
 /** An in-site link that routes without a reload (external links behave normally). */
-export function A({onNavigate, onClick, ...props}: AProps) {
+export function A({onNavigate, onClick, href, ...props}: AProps) {
   return (
     <a
       {...props}
+      href={withBase(href)}
       onClick={(e) => {
         onClick?.(e);
         if (!e.defaultPrevented) linkClick(e, onNavigate);
@@ -142,9 +144,9 @@ export function Eyebrow({children, className = ''}: {children: ReactNode; classN
 }
 
 export function Crest({className = ''}: {className?: string}) {
-  return <img src="/media/brand/crest.webp" alt="" aria-hidden="true" width={496} height={591} className={className} decoding="async" />;
+  return <img src={withBase('/media/brand/crest.webp')} alt="" aria-hidden="true" width={496} height={591} className={className} decoding="async" />;
 }
 
 export function Seal({className = ''}: {className?: string}) {
-  return <img src="/media/brand/seal.webp" alt="" aria-hidden="true" width={192} height={192} className={className} decoding="async" />;
+  return <img src={withBase('/media/brand/seal.webp')} alt="" aria-hidden="true" width={192} height={192} className={className} decoding="async" />;
 }
